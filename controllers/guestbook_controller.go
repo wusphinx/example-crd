@@ -20,6 +20,7 @@ import (
 	"context"
 
 	"github.com/go-logr/logr"
+	v1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -48,6 +49,6 @@ func (r *GuestbookReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 
 func (r *GuestbookReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&webappv1.Guestbook{}).
+		For(&webappv1.Guestbook{}).For(&v1.Deployment{}).
 		Complete(r)
 }

@@ -29,6 +29,10 @@ type GuestbookSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of Guestbook. Edit Guestbook_types.go to remove/update
+	// 设定参数Foo的取值范围，也就是做入参校验
+
+	// +kubebuilder:validation:MaxLength=10
+	// +kubebuilder:validation:MinLength=1
 	Foo string `json:"foo,omitempty"`
 }
 
